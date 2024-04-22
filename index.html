@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+
+  <title>你好!</title>
+</head>
+
+<body>
+  <div id="content-container">
+    <div id="head">
+      <p>合并PPT</p>
+      <select id="select">
+        <option value="中后台" selected="selected">中后台</option>
+        <option value="业务线">业务线</option>
+      </select>
+      <button id="fresh"><img id="fresh-icon" src="./img/if-refresh 1@3x.png" alt="refreash"></button>
+    </div>
+    <div id="list">
+    </div>
+    <div>
+      <button id="merge">合并</button>
+    </div>
+  </div>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
