@@ -4,7 +4,7 @@
   "description": "merge some ppt",
   "main": "main.js",
   "scripts": {
-    "start": "chcp 65001 && electron ."
+    "start": "electron ."
   },
   "author": "jiaming",
   "license": "MIT",
