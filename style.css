@@ -1,161 +1,175 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", serif;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", serif;
+    overflow: hidden;
 }
 
 /* Only edit this if you know what you are doing! */
 img {
-  position: absolute;
-  display: block;
-  margin: 0;
-  border: none;
-  padding: 0;
+    position: absolute;
+    display: block;
+    margin: 0;
+    border: none;
+    padding: 0;
 }
 
 /* Only edit this if you know what you are doing! */
-div {
-  position: absolute;
-}
+
 
 #content-container {
-  display: block;
-  position: relative;
-  width: 600px;
-  height: 900px;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    width: 600px;
+    height: 900px;
+    overflow: hidden;
+    background-color: rgb(236, 230, 240);
+
 }
 
 #head {
-  z-index: 2;
-  left: 0;
-  top: 0;
-  width: 600px;
-  height: 63px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(218, 218, 217, 1);
-  color: rgba(16, 16, 16, 1);
-  font-size: 28px;
-  font-family: Roboto, sans-serif;
-  border: 1px solid rgba(187, 187, 187, 1);
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 90%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(236, 230, 240);
+    color: rgba(16, 16, 16, 1);
+    font-size: 24px;
+    font-family: Roboto, sans-serif;
+    /*border: 1px solid rgba(187, 187, 187, 1);*/
+    border-radius: 10px;
 }
+
 #list {
-  left: 0;
-  top: 74px;
-  width: 100%;
-  height: 637px;
+    display: flex;
+    position: absolute;
+    top: 60px;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    width: 90%;
+    height: 700px;
+    padding: 2% 2% 2% 2%;
+    background-color: rgb(254, 247, 255);
+    border-radius: 10px;
 }
 
 .list-cell {
-  margin-top: 5px;
-  position: static;
-  width: 598px;
-  height: 49px;
-  line-height: 20px;
-  background-color: rgba(255, 255, 255, 1);
-  color: rgba(16, 16, 16, 1);
-  font-size: 14px;
-  text-align: left;
-  font-family: Roboto, sans-serif;
-  border: 1px solid rgba(187, 187, 187, 1);
+    margin-top: 3px;
+    position: relative;
+    width: 500px;
+    height: 40px;
+    line-height: 20px;
+    background-color: rgb(234, 221, 255);
+    color: rgba(16, 16, 16, 1);
+    font-size: 14px;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+    border: 2px solid rgba(187, 187, 187, 1);
+    border-radius: 10px;
+    cursor: move;
 }
 
 .list-cell-warnning {
-  margin-top: 5px;
-  position: static;
-  width: 598px;
-  height: 49px;
-  line-height: 20px;
-  background-color: rgba(255,176,99,1);
-  color: rgba(16, 16, 16, 1);
-  font-size: 14px;
-  text-align: left;
-  font-family: Roboto, sans-serif;
-  border: 1px solid rgba(187, 187, 187, 1);
+    margin-top: 3px;
+    position: relative;
+    width: 500px;
+    height: 40px;
+    line-height: 20px;
+    background-color: rgb(255, 216, 228);
+    color: rgba(16, 16, 16, 1);
+    font-size: 14px;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+    border: 2px solid rgba(187, 187, 187, 1);
+    border-radius: 10px;
+    cursor: move;
 }
 
 .list-cell-select {
-  position: static;
-  width: 598px;
-  height: 49px;
-  line-height: 20px;
-  background-color: rgb(122, 255, 99);
-  color: rgba(16, 16, 16, 1);
-  font-size: 14px;
-  text-align: left;
-  font-family: Roboto, sans-serif;
-  border: 5px solid rgb(122, 255, 99);
+    position: static;
+    width: 598px;
+    height: 49px;
+    line-height: 20px;
+    background-color: rgb(122, 255, 99);
+    color: rgba(16, 16, 16, 1);
+    font-size: 14px;
+    text-align: left;
+    font-family: Roboto, sans-serif;
+    border: 5px solid rgb(122, 255, 99);
 }
 
 .list-text {
-  margin-top: 11px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  left: 80px;
-  width: 100%;
-  height: 27px;
-  color: rgba(16, 16, 16, 1);
-  font-size: 18px;
-  text-align: left;
-  font-family: PingFangSC-regular, sans-serif;
+    margin-top: 9px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 80px;
+    width: 100%;
+    height: 22px;
+    color: rgba(16, 16, 16, 1);
+    font-size: 18px;
+    text-align: left;
+    font-family: PingFangSC-regular, sans-serif;
 }
+
 .list-icon {
-  margin-left: 23px;
-  margin-top: 7px;
-  width: 38px;
-  height: 38px;
+    margin-left: 23px;
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
 }
 
 #select {
-  position: absolute;
-  left: 397px;
-  z-index: 0;
-  line-height: 33px;
-  margin: 0;
-  height: 41px;
-  font-size: 23px;
-  font-family: Roboto, sans-serif;
-  border: 1px solid rgba(218, 218, 217, 1);
-  background-color: rgba(218, 218, 217, 1);
-  transition: all 0.3s;
-  width: 110px;
+    position: absolute;
+    left: 397px;
+    z-index: 0;
+    line-height: 33px;
+    margin: 0;
+    height: 38px;
+    font-size: 19px;
+    font-family: Roboto, sans-serif;
+    border: rgb(236, 230, 240);
+    background-color: rgb(236, 230, 240);
+    transition: all 0.3s;
+    width: 90px;
 }
+
 #fresh {
-  position: absolute;
-  z-index: 1;
-  left: 535px;
-  top: 14px;
-  width: 34px;
-  height: 34px;
-  border: none;
-  background-color: rgba(218, 218, 217, 1);
+    position: absolute;
+    z-index: 1;
+    left: 520px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: rgb(236, 230, 240);
 }
+
 #fresh-icon {
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  top: 0;
-  width: 34px;
-  height: 34px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
 }
+
 #merge {
-  position: fixed;
-  bottom: 16px;
-  margin-left: 10px;
-  width: 580px;
-  height: 60px;
-  line-height: 41px;
-  border-radius: 8px 8px 8px 8px;
-  background-color: rgba(23, 132, 252, 1);
-  color: rgba(255, 255, 255, 1);
-  font-size: 28px;
-  text-align: center;
-  font-family: PingFang SC, sans-serif;
-  border: 2px solid rgba(239, 239, 239, 1);
+    position: fixed;
+    bottom: 16px;
+    width: 80%;
+    height: 60px;
+    line-height: 41px;
+    border-radius: 8px 8px 8px 8px;
+    background-color: rgb(103, 80, 164);
+    color: rgb(255, 255, 255);
+    font-size: 28px;
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    border: 0;
 }
