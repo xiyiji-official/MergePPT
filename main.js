@@ -4,7 +4,7 @@ const {path, addFile, getList} = require("./src/param")
 const createWindow = () => {
     // 创建浏览器窗口
     const mainWindow = new BrowserWindow({
-        width: 600,
+        width: 521,
         height: 900,
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
