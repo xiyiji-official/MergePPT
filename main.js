@@ -20,6 +20,7 @@ const createWindow = () => {
 // 部分 API 在 ready 事件触发后才能使用。
 
 app.whenReady().then(() => {
+
     ipcMain.handle("add-File", addFile);
     ipcMain.handle("init-List", getList);
     ipcMain.handle("update-List", getList);
