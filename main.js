@@ -1,11 +1,12 @@
-const {app, BrowserWindow, ipcMain} = require("electron");
+const {app, BrowserWindow, ipcMain, screen} = require("electron");
 const {path, addFile, getList} = require("./src/param")
 
 const createWindow = () => {
     // 创建浏览器窗口
+    const size = screen.getPrimaryDisplay().workAreaSize
     const mainWindow = new BrowserWindow({
-        width: 521,
-        height: 900,
+        width: parseInt(size.width * 0.3391927083333333),
+        height: size.height,
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
         },
