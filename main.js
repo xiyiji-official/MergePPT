@@ -1,5 +1,5 @@
 const {app, BrowserWindow, ipcMain, screen} = require("electron");
-const {path, addFile, getList} = require("./src/param")
+const {path, addFile, getList, merge} = require("./src/param")
 
 const createWindow = () => {
     // 创建浏览器窗口
@@ -24,6 +24,7 @@ app.whenReady().then(() => {
     ipcMain.handle("add-File", addFile);
     ipcMain.handle("init-List", getList);
     ipcMain.handle("update-List", getList);
+    ipcMain.handle("merge", merge);
     createWindow();
 
     app.on("activate", () => {

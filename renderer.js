@@ -1,10 +1,12 @@
 // 定义一些html中本来就有元素
 const freshBtn = document.getElementById("fresh");
 const divList = document.getElementById("list");
+const mergeBtn = document.getElementById("merge");
+
 
 
 function animate(prevRect, target) {
-    let ms = 500
+    let ms = 400
     if (ms) {
         const currentRect = target.getBoundingClientRect()
         if (prevRect.nodeType === 1) {
@@ -24,7 +26,6 @@ function animate(prevRect, target) {
     }
 }
 
-
 // 立即执行 初始化渲染中间的文件列表
 (async function () {
     const selectType =
@@ -43,27 +44,39 @@ freshBtn.addEventListener("click", async () => {
     divList.innerHTML = await window.electronAPI.updateList(selectType);
 });
 
-let draging = null
+// 监听合并按钮点击事件，执行合并文件功能
+mergeBtn.addEventListener("click", async () => {
+    let filePathList = []
+    const fileList = divList.getElementsByClassName("list-cell");
+    // await window.electronAPI.merge(fileList);
+    for (let i = 0; i < fileList.length; i++) {
+        const fileName = fileList[i].getElementsByTagName("p")[0];
+        filePathList.push(fileName.innerText)
+    }
+    await window.electronAPI.merge(filePathList);
+});
+
+let draging = null;
 divList.addEventListener("dragstart", (event) => {
     const targeElement = event.target.id;
-    console.log(targeElement)
-    event.dataTransfer.setData("html", event.target.innerHTML)
-    draging = event.target
+    console.log(targeElement);
+    event.dataTransfer.setData("html", event.target.innerHTML);
+    draging = event.target;
 
 });
 
 // 监听divList上的【拖动到】事件
 // :bug: 目前这个移动会溢出divlist，需要判断一下targetID的内容，不能是非空即可
 divList.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const targetID = event.target.id; // 目前停留在的目标元素ID
     const dragingID = draging.id;
-    const targetClass = event.target.className
-    console.log(event.target.className)
-    if ((targetClass === "list-text" || targetClass === "list-cell" || targetClass === "list-cell-warnning") ) {
+    const targetClass = event.target.className;
+    console.log(`dragingID: ${dragingID}`);
+    console.log(event.target.className);
+    if ((targetClass === "list-text" || targetClass === "list-cell" || targetClass === "list-cell-warnning") && dragingID !== null) {
         console.log("处于可放置位置")
-        event.preventDefault();
-        event.stopPropagation()
-
         if (targetClass === "list-text") {
             let targetRect = event.target.parentNode.getBoundingClientRect();
             let dragingRect = draging.getBoundingClientRect();
@@ -95,7 +108,6 @@ divList.addEventListener("dragover", (event) => {
                 animate(targetRect, event.target)
             }
         }
-
     }
 });
 
@@ -118,13 +130,14 @@ divList.addEventListener("drop", async (event) => {
             [file.name, file.path],
             selectType
         );
+        draging = null;
     } else {
-        const dataList =  divList.getElementsByClassName("list-cell");
+        const dataList = divList.getElementsByClassName("list-cell");
         console.log(dataList)
         for (let i = 0; i < dataList.length; i++) {
             const fileName = dataList[i].getElementsByTagName("p")[0];
             console.log(`fileName: ${fileName.innerText}`);
         }
-
+        draging = null;
     }
 });

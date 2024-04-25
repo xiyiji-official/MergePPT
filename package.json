@@ -9,6 +9,7 @@
   "author": "jiaming",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^30.0.1"
+    "electron": "^30.0.1",
+    "nodejs-pptx": "^1.2.4"
   }
 }

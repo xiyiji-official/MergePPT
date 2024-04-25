@@ -1,7 +1,7 @@
 const {app} = require("electron");
 const path = require("node:path");
 const fs = require("fs/promises");
-
+let workType = null;
 const deskPath = app.getPath("desktop");
 const correctList = {
     中后台: [
@@ -71,6 +71,7 @@ function reJudge(StrA, ListB) {
  * @returns
  */
 async function getList(event, value) {
+    workType = value
     const directoryPath = path.join(deskPath, value);
     try {
         await fs.mkdir(directoryPath)
@@ -101,4 +102,12 @@ async function getList(event, value) {
     return fileList_Html;
 }
 
-module.exports = {path, addFile, getList};
+async function merge(event, fileList) {
+    const workPath = path.join(deskPath, workType);
+    fileList.forEach((file) => {
+        const filePath = path.join(workPath, file)
+        console.log(`filePath: ${filePath}`);
+    })
+}
+
+module.exports = {path, addFile, getList, merge};
