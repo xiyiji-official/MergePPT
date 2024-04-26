@@ -1,31 +1,31 @@
 const {app} = require("electron");
 const path = require("node:path");
 const fs = require("fs/promises");
-
+let workType = null;
 const deskPath = app.getPath("desktop");
 const correctList = {
     中后台: [
-        "主体管理部",
-        "金融牌照部",
-        "内控审计部",
-        "政企事务部",
-        "信息安全",
-        "技术中心",
-        "法律合规中心",
-        "市场品牌",
-        "采购部",
-        "行政部",
-        "人力行政中心",
+        "企业文化",
+        "总裁办",
         "财务中心",
         "恒学堂",
-        "总裁办",
-        "企业文化"
+        "人力行政中心",
+        "行政部",
+        "采购部",
+        "市场品牌",
+        "法律合规中心",
+        "技术中心",
+        "信息安全",
+        "政企事务部",
+        "内控审计部",
+        "金融牌照部",
+        "主体管理部"
     ],
     业务线: [
-        "小恒数科&恒生活",
-        "汇彬",
+        "企业文化",
         "产品投资中心",
-        "企业文化"
+        "汇彬",
+        "小恒数科&恒生活",
     ],
 };
 
@@ -71,6 +71,7 @@ function reJudge(StrA, ListB) {
  * @returns
  */
 async function getList(event, value) {
+    workType = value
     const directoryPath = path.join(deskPath, value);
     try {
         await fs.mkdir(directoryPath)
@@ -101,4 +102,12 @@ async function getList(event, value) {
     return fileList_Html;
 }
 
-module.exports = {path, addFile, getList};
+async function merge(event, fileList) {
+    const workPath = path.join(deskPath, workType);
+    fileList.forEach((file) => {
+        const filePath = path.join(workPath, file)
+        console.log(`filePath: ${filePath}`);
+    })
+}
+
+module.exports = {path, addFile, getList, merge};
