@@ -3,10 +3,13 @@ const freshBtn = document.getElementById("fresh");
 const divList = document.getElementById("list");
 const mergeBtn = document.getElementById("merge");
 
-
-
+/**
+ * 拖拽时触发的动画效果
+ * @param prevRect
+ * @param target
+ */
 function animate(prevRect, target) {
-    let ms = 400
+    let ms = 300
     if (ms) {
         const currentRect = target.getBoundingClientRect()
         if (prevRect.nodeType === 1) {
@@ -22,7 +25,6 @@ function animate(prevRect, target) {
             target.removeAttribute('style')
             target.animated = false
         }, ms);
-
     }
 }
 

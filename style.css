@@ -90,18 +90,7 @@ img {
     border-radius:0.5263157894736842rem;
     cursor:move;
 }
-.list-cell-select {
-    position:static;
-    width:31.473684210526315rem;
-    height:2.5789473684210527rem;
-    line-height:1.0526315789473684rem;
-    background-color:rgb(122,255,99);
-    color:rgba(16,16,16,1);
-    font-size:0.7368421052631579rem;
-    text-align:left;
-    font-family:Roboto,sans-serif;
-    border:5px solid rgb(122,255,99);
-}
+
 .list-text {
     margin-top:0.47368421052631576rem;
     position:absolute;
