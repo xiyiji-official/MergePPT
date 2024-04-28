@@ -148,3 +148,49 @@ app.on("window-all-closed", () => {
 
 // 在当前文件中你可以引入所有的主进程代码
 // 也可以拆分成几个文件，然后用 require 导入。
+
+
+
+/////////////////////////////////////////////////////////
+// node-pyrunner
+/////////////////////////////////////////////////////////
+
+const pyrunner = require('node-pyrunner')
+
+/* init node-pyrunner */
+// pyrunner.config['python_home'] = `./python/win32/x64/3.10.10`;
+pyrunner.config['module_search_paths'].push('./pyscript');
+pyrunner.init();
+
+/* js func for python call */
+// create func in global object.
+// funcname = function(){} or funcname = () => {}
+sayHello = function (num1, num2) {
+  let total = num1 + num2;
+  console.log('Main SayHello total:' + total);
+  return ++total;
+}
+
+/* run python script */
+pyrunner.runScriptSync("print('main runSync pyscript')");
+pyrunner.runScript("print('main run pyscript')");
+
+let appModule = pyrunner.import('app');
+
+// sync call python funtion
+let total = appModule.callSync('sum', [1, 2]);
+console.log(`sync total:${total}`);
+
+// async call python funtion
+appModule.call('sum', [2, 3], (data)=>{
+  console.log(`async total:${data}`);
+}, (error)=>{
+  console.log(error);
+});
+
+// python call js function
+appModule.call('call_js', [5, 6], (data)=>{
+  console.log(`callJS result:${data}`);
+}, (error)=>{
+  console.log(error);
+});
